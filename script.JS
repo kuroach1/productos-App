@@ -24,7 +24,18 @@ class UI{
 
 document.getElementById(`product-form`).addEventListener(`submit`, function(e){
     e.preventDefault();
-    const ui=new UI ();
-    ui.showMessage(`product added succesfuly`, `sucess`)
+    const ui = new UI();
+    const name = document.getElementById('name').value;
+    const price = document.getElementById('price').value;
+    const quantity = document.getElementById('quantity').value;
+    const date = document.getElementById('date').value;
 
+    if (name && price && quantity && date) {
+        const product = new Product(name, price, quantity, date);
+        console.log(product);
+        ui.showMessage(`Product added successfully`, `success`);
+    } else {
+        ui.showMessage(`Please fill out all fields`, `danger`);
+    }
 });
+
